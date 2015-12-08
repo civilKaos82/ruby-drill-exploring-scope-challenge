@@ -1,16 +1,13 @@
 # Ruby Drill: Exploring Scope 
  
-##Summary 
+## Summary
+When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often we want to ues it later in our program.  So, we define a variable and assign our object to the variable.
 
- Scope can be a difficult concept to grasp.  
-  
-Do you know the ins and outs of how constants, global variables, class variables, instance variables, and local variables work?  How about the difference between class methods and instance methods?  What about methods defined within a module?
-  
-If your answer is 'yes' to all of the above questions, then congratulations.  Now please go teach your friends. :)
-  
-If not, then let's use this challenge as an excuse to play around with and learn about the intricacies of scope.
+We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Our choice of variable type will affect when and how we're able to access a variable.
 
-As a reference, find a copy of the "Programming Ruby - The Pragmatic Programmer's Guide" aka "Pickaxe" in the Dropbox Book Folder and read the section "Variables and Constants" in chapter 22.
+The question we'll explore in this challenge is "Where are our variables visible?".  In more technical language, we might ask, "What is the *scope* of a variable?".  We'll explore and refine our understanding of scope in Ruby.
+
+*Note:*   The section [*Scope of Constants and Variables*][pickaxe guide scope] from *Programming Ruby: The Pragmatic Programmer's Guide* can serve as an additional reference.
 
 ##Releases
 
@@ -94,3 +91,5 @@ What happens when you try to read from and write to constants and global variabl
 <!-- ##Optimize Your Learning  -->
 
 ##Resources
+
+[pickaxe guide scope]: http://ruby-doc.com/docs/ProgrammingRuby/html/language.html#UP
