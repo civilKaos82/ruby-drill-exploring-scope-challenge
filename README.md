@@ -1,11 +1,5 @@
-# Ruby Drill Exploring Scope 
+# Ruby Drill: Exploring Scope 
  
-##Learning Competencies 
-
-* Use instance variables and accessor methods effectively
-* Work with objects in Ruby
-* Use variables and constants
-
 ##Summary 
 
  Scope can be a difficult concept to grasp.  
