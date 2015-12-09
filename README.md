@@ -18,7 +18,8 @@ Our programs begin executing in a top-level scope.  Some code triggers a change 
 When scope changes, we lose access to some variables, as we'll see.
 
 
-*Note:*   The section [*Scope of Constants and Variables*][pickaxe guide scope] from *Programming Ruby: The Pragmatic Programmer's Guide* can serve as an additional reference on the scope of .
+*Note:*   The section [*Scope of Constants and Variables*][pickaxe guide scope] from *Programming Ruby: The Pragmatic Programmer's Guide* can serve as an additional reference on the scope of variables.
+
 
 ##Releases
 
