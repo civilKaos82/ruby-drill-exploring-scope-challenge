@@ -21,16 +21,45 @@ When scope changes, we lose access to some variables, as we'll see.
 *Note:*   The section [*Scope of Constants and Variables*][pickaxe guide scope] from *Programming Ruby: The Pragmatic Programmer's Guide* can serve as an additional reference on the scope of variables.
 
 
-##Releases
+## Releases
+### Release 0: Global Variables
+Global variables are the easiest to understand when it comes to scope.  That is because they have visibility everywhere.  In other words, scope changes have no effect on whether or not a global variable is accessible.  We can access them and reassign their values anywhere in our code.
 
-###Release 0 : Objectify it.
+We're going to demonstrate working with global variables with the provided `TipCalculator` module.  Look at the code for the module (see `tip_calculator.rb`). We can see that the module has a method that returns the value of a global variable `$global_tip_percentage`.  It also has a method that reassigns the value of that global variable.  Before we begin working with the code, note that before a global variable's value has been assigned, its value is `nil`.
 
-Choose an object to create (bicycle, aquarium) and use it to explore the following.  **Note:** We will use this object in lots of examples this week - pick something fun. 
+Open IRB and ... 
+
+1. Check the value of `$global_tip_percentage`.  It should return `nil`, since we haven't assigned it a value.
+
+2. Assign a value to our global variable:  `$global_tip_percentage = 0.15`.
+
+3. `load 'tip_calculator.rb'`.  When the module definition is executed, the value of `$global_tip_percentage` is reassigned to be `0.2`.
+
+4. Check the value of `$global_tip_percentage`.  It should have been changed to `0.2`.
+
+5. Ask the `TipCalculator` for the customary percentage.  It should return `0.2`, the value of `$global_tip_percentage`.
+
+6. Assign a new value to our global variable:  `$global_tip_percentage = 0.25`.
+
+7. Ask the `TipCalculator` for the customary percentage again.  It should return the value we just assigned to the global variable.
+
+8. Ask the `TipCalculator` to set the customary percentage:  `TipCalculator.customary_percentage = 0.3`, which will again reassign the value of our global variable.
+
+6. Check the value of `$global_tip_percentage`.  It should have changed to the value we just supplied.
+
+
+To reiterate, global variables are always accessible.  We've assigned and accessed the value of a global variable in the top-level scope, while a module was being defined, and from within methods.  No scope change had an effect on our ability to access the global variable.
+
+As we might imagine, relying on global variables whose values are subject to being changed at any time by any object can cause unexpected results.  Therefore, it's best practice not to utilize global variables, if it can be avoided.
+
+
+
 
 #### Local variables and methods
-
 Write a program that has one local variable `local_var` defined in the global scope and one method `get_local_var` defined in the global scope.  
 The method should return the value of the local variable.  Does it work?  What happens if you define a local variable of the same name within the body of the method definition and assign it a different value?
+
+
 
 #### Classes and instance variables
 
