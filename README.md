@@ -132,6 +132,49 @@ We'll explore the visibility of local variables by writing some code in IRB.  So
 This is by no means an exhaustive exploration of local variables, but it should provide a foundation for understanding how changes in scope affect the visibility of local variables.  The key take away is that anytime scope changes, there is also a change in the set of local variables which are visible.
 
 
+### Release 3: Instance Variable
+We've worked with instance variables in previous challenges.  Instance variables are named beginning with `@`.  For example, `@name`, `@date_of_birth`, etc.  We use them to hold state for individual objects.  If we have a class `Employee`, we would use instance variables to hold the name of each unique instance of `Employee`.
+
+The visibility of instance variables is very limited.  They are only visible to the object to which they belong.  As we remember from the [accessor methods challenge], if we want an object to share the values of its instance variables, we create accessor methods to expose them.
+
+We're going to explore a little more about instance variables.  We'll be working with the provided `Dog` class.  Take a moment to review the file `dog.rb`.  Notice that when a new instance of the class `Dog` is created, three arguments are expect and the each is assigned to an instance variable.  Then, each of the instance variables is exposed through a long-hand accessor method.
+
+Open IRB and ...
+
+1.  `load 'dog.rb'`.
+
+2.  Create a new instance of the class `Dog`:  
+
+  ```ruby
+  jayda = Dog.new('Jayda', 'English Bull Terrier', 'OH-123456')
+  ```
+
+3.  Ask the new dog for its name:  `jayda.name`.  And, the object returns the value of its `@name` instance variable.  
+
+  In the body of the method `Dog#name`, we make no reference to any particular object, we just ask for `@name`.  Presumably, there could be any number of objects with the instance variable `@name`.  How is it determined which object's instance variable to return?
+  
+4.  Check the value of `self`.  It should be `main`.
+
+5.  Check the value of `@name`.  What is it?  It should be `nil`.  Just like global variables, instance variables which have not been assigned a value return `nil`.
+
+6.  Assign `@name` a value:  `@name = 'Sam'`.
+
+7.  Check the value of `@name`.  It should return `'Sam'`.  We know that instance variables are internal to an object.  To which object does this particular `@name` instance variable belong?
+
+8.  Check our dog's name to see if it's changed:  `jayda.name`.  It should not have been altered.
+
+9.  Define a method directly on our top-level object (i.e., `main`) to return its instance variable `@name`:
+
+  ```ruby
+  def self.name
+    @name
+  end
+  ```
+
+10.  Call the method on `self`:  `self.name`.  What is returned?  `'Sam'`.  When were were accessing and assigning instance variables in the top-level scope, we were dealing with the instance variables of `self`.
+
+  And that's always the case.  When we access or assign an instance variable, we do so from or to whichever object `self` refers.  Just as `self` is the default receiver of method calls, it is also the object we deal with when working with instance variables.
+
 
 
 
@@ -202,4 +245,5 @@ What happens if you change the value of `@@class_var` from one instance, and the
 
 ##Resources
 
+[accessor methods challenge]: ../../../ruby-drill-accessor-methods-challenge
 [pickaxe guide scope]: http://ruby-doc.com/docs/ProgrammingRuby/html/language.html#UP
