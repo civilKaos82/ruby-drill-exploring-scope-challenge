@@ -82,6 +82,56 @@ Open IRB and ...
 *Note:*  Technically, the value of a constant can be changed, but doing so would violate convention, and Ruby will warn us.
 
 
+### Release 2: Local Variables
+In contrast to global variables and constants which are accessible throughout our programs, local variables are accessible only within the scope in which they are defined.  Any time scope changes, we're working with a new set of local variables; because of this, it's helpful to understand when changes in scope are triggered.
+
+We'll explore the visibility of local variables by writing some code in IRB.  So, open IRB and ...
+
+1.  Check the value of `self`.  It should be `main`, indicating that we're working in the top-level scope.
+
+2.  Define a local variable in the top-level scope:  `status = :curious`.
+
+3.  Access the value of the local variable:  `status`.  We haven't changed scope, so we have access to our top-level local variable.
+
+4.  Write a method to return the value of our variable:
+
+  ```ruby
+  def current_status
+    return status
+  end
+  ```
+
+5.  Run the method:  `current_status`.  What does the error message tell us?  There is no local variable `status`.  Why not?  Because we've changed scope and lost access to the local variables in the top-level scope.
+
+6.  Overwrite the `current_status` method so that it defines its own `status` local variable:
+
+  ```ruby
+  def current_status
+    status = :intrigued
+    return status
+  end
+  ```
+
+7.  Run the method:  `current_status`.  We see that it returns `:intrigued`, the value of the local variable `status` within the scope of the method.
+
+8.  Has this affected the value of the top-level local variable `status`?  Access the value of `status`.  It's value has not been changed.  As we know it's out of scope when our method runs.
+
+9. Overwrite the method again so that it has one parameter:
+
+  ```ruby
+  def current_status(status)
+    return status
+  end
+  ```
+
+10.  Run the method:  `current_status(:inquisitive)`.  It returns the argument, `:inquisitive`.  If we define a method with parameters—in this case one parameter named `status`—the parameters become local variables when the method runs. When we then call the method, the arguments we pass to it are assigned to local variables—in this case, `status`.
+
+11.  Given that method parameters act as local variables when the method runs, would having a parameter named `status` interfere with our top-level variable `status`?  Access the value of `status`.  Was it affected?
+
+
+This is by no means an exhaustive exploration of local variables, but it should provide a foundation for understanding how changes in scope affect the visibility of local variables.  The key take away is that anytime scope changes, there is also a change in the set of local variables which are visible.
+
+
 
 
 
