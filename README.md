@@ -47,10 +47,42 @@ Open IRB and ...
 
 6. Check the value of `$global_tip_percentage`.  It should have changed to the value we just supplied.
 
+7. Exit IRB.
+
 
 To reiterate, global variables are always accessible.  We've assigned and accessed the value of a global variable in the top-level scope, while a module was being defined, and from within methods.  No scope change had an effect on our ability to access the global variable.
 
 As we might imagine, relying on global variables whose values are subject to being changed at any time by any object can cause unexpected results.  Therefore, it's best practice not to utilize global variables, if it can be avoided.
+
+
+### Release 1: Constants
+Constants are variables whose values are meant to be ... constant.  In other words, we don't reassign their values.  Conventionally, constants are written in all caps with words separated by underscores (e.g., `MINIMUM_HEIGHT`).  However, any variable that just begins with a capital letter is considered by Ruby to be a constant.  For example, classes and modules are considered constants as well, though we use different conventions for their names (e.g., `Person` or `HeightValidator`).
+
+As with global variables, constants are always accessible in our programs.  However, depending on the scope in which the constant has been defined, it might not be as straight forward to access as a global variable.
+
+We're going to demonstrate working with global variables with the provided `RideHeightCalculator` module.  Look at the code for the module (see `ride_height_calculator.rb`).  In the code, we begin by defining a constant, `PARK_NAME`.  We then define a module and within the module define a series of constants (e.g., `ROLLER_COASTER_MINIMUM_HEIGHT`).
+
+Open IRB and ...
+
+1. Check the value of `PARK_NAME`.  Unlike constants which, when unassigned, default to `nil`, trying to access an uninitialized constant will raise an error.
+
+2. `load 'ride_height_checker.rb'`
+
+3. Check the value of `PARK_NAME`.  Now that it's been declared and assigned, we can get its value.
+
+4. Check the value of `ROLLER_COASTER_MINIMUM_HEIGHT`.  Again we get an error.  Because this constant was declared within a module, we can't access it directly.
+
+5. Check the value of `RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT`.  Because we defined this constant within the `RideHeightChecker`, we can go through that module to access it, making use of the namespace operator, `::`.
+
+6. Exit IRB.
+
+7. Look at the code for the private method `.minimum_height_for_type`.  The constants are being accessed there without referencing the name of the module.  That's possible from within the module definition itself—the same would be true for a class definition.  But, as we saw, from outside the module definition, the constants are only accessible by using the module as a namespace (e.g., RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT).
+
+
+*Note:*  Technically, the value of a constant can be changed, but doing so would violate convention, and Ruby will warn us.
+
+
+
 
 
 
