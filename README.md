@@ -152,13 +152,6 @@ Then define a getter and setter method for `@@class_var` and play around with as
 
 What happens if you change the value of `@@class_var` from one instance, and then create a new instance of the class and use your getter method to read the value of `@@class_var`?
 
-#### Global variables and constants
-
-Within your global scope, create a constant `THIS_IS_A_CONSTANT` and a global variable `$global_var`.  
-
-Then write getter and setter methods for your constant and global variable and duplicate them within your class and in the global scope.  (I know, this is not DRY, but we're just experimenting here).
-
-What happens when you try to read from and write to constants and global variables from different place in your program?  Did you get any errors?  Did you Google the errors? ;) 
 
 
 <!-- ##Optimize Your Learning  -->
