@@ -137,12 +137,6 @@ This is by no means an exhaustive exploration of local variables, but it should 
 
 
 
-#### Local variables and methods
-Write a program that has one local variable `local_var` defined in the global scope and one method `get_local_var` defined in the global scope.  
-The method should return the value of the local variable.  Does it work?  What happens if you define a local variable of the same name within the body of the method definition and assign it a different value?
-
-
-
 #### Classes and instance variables
 
 Add a class `BasicClass` to your program.  Duplicate your `get_local_var` method within the class.
