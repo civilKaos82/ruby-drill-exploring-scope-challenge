@@ -214,9 +214,6 @@ Again, class variables are shared between a class and all instances of that clas
 
 
 
-<!-- ##Optimize Your Learning  -->
-
-##Resources
 
 [accessor methods challenge]: ../../../ruby-drill-accessor-methods-challenge
 [pickaxe guide scope]: http://ruby-doc.com/docs/ProgrammingRuby/html/language.html#UP
