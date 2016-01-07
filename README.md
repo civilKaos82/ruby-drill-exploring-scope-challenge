@@ -180,34 +180,6 @@ Open IRB and ...
 
 
 
-#### Classes and instance variables
-
-Add a class `BasicClass` to your program.  Duplicate your `get_local_var` method within the class.
-
-Create a new instance of `BasicClass` and call the `get_local_var` method on it.  What happens?
-
-Now add an instance variable `@instance_var` to your class and define an instance method `get_instance_var` for your class that returns the value of `@instance_var`.
-
-Try creating a new instance of the class and calling `get_instance_var` on it.  What happens?
-
-#### Getters and setters
-
-Your instance method `get_instance_var` is an example of a *getter method*.   It allows us *read access* to an instance variable of an object.
-
-A *setter method* is similar, except that instead of reading an instance variable, it allows us to *write* a new value to the instance variable.
-
-Create a setter method for `BasicClass` named `set_instance_var=` that takes one argument and then assigns the value of the argument to the instance variable `@instance_var`.
-
-Note that a commonly used pattern for setter methods is to name them with a `=` at the end.  This is simply syntactic sugar that allows us to write code like this:
-
-```ruby
-foo = BasicClass.new
-foo.get_instance_var
-# => 'default value'
-foo.set_instance_var = 'some other value'
-```
-
-The last line is the same as writing `foo.set_instance_var=('some other value')`, it's just easier to read.  Thank you, Ruby.
 
 #### Class methods
 
