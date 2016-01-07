@@ -176,6 +176,35 @@ Open IRB and ...
   And that's always the case.  When we access or assign an instance variable, we do so from or to whichever object `self` refers.  Just as `self` is the default receiver of method calls, it is also the object we deal with when working with instance variables.
 
 
+### Release 4: Class Variables
+As with global variables, there are not many situations where we would want to rely on class variables, but they do exist, so we'll take a look.  Class variables are named somewhat like instance variables, only they begin with `@@`.
+
+The key thing to understand about class variables is that they are visible to a class and all instances of that class.  We'll explore class variables using the supplied `Borg` class.  Take a look at the class.  The class definition begins by setting a class variable `@@borg_count`.  We also define a class method `Borg.count` which returns the value of the class variable.  And later we define an instance variable `Borg#name` which accesses the value of the instance variable.  Again, class variables are shared between the class itself and all instances of the class.
+
+Open IRB and ...
+
+1.  `load 'borg.rb'`.
+
+2.  Check how many borg have been created:  `Borg.count`.
+
+3.  Create a new instance of the class:  `one = Borg.new`.
+
+4.  Check how many borg have been created:  `Borg.count`.  It's been updated to show that a borg has been created.
+
+5.  Ask our `Borg` instance for its name:  `one.name`.  It should return `'1 of 1'`, which demonstrates that just like the class, this instance has access to the class variable.  What about another instance?
+
+6.  Create another instance of the class:  `two = Borg.new`.
+
+7.  Ask it for its name:  `two.name`.
+
+8.  The name of our first `Borg` instance is calculated based on the value of the class variable.  Has it now changed?  Check:  `one.name`.
+
+9.  Does the `Borg` class itself access the updated value as well?  Check:  `Borg.count`.
+
+
+Again, class variables are shared between a class and all instances of that class.  We won't discuss it here, but class variables are also shared with child classes.  That's one variable shared among potentially a whole host of objects, which could lead to problems in the same way that the misuse of global variables can lead to problems.  Class variables are a part of Ruby we should understand, but in most cases they're better left unused.
+
+
 
 
 
