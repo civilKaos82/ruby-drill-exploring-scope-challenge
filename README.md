@@ -181,21 +181,6 @@ Open IRB and ...
 
 
 
-#### Class methods
-
-A *class method* is a method on a class, as opposed to a method on an instance of a class.  It works like this:
-
-```ruby
-class MyCoolClass
-  def self.some_method
-    "quack"
-  end
-end
-
-MyCoolClass.some_method # => "quack"
-```
-
-What are some class methods you've seen?  `MyCoolClass.new` is one class method that every class in Ruby comes with, which returns a new instance of a class.
 
 #### Class variables
 
