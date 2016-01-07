@@ -211,19 +211,6 @@ Again, class variables are shared between a class and all instances of that clas
 
 
 
-#### Class variables
-
-An *instance variable*, as the name implies, is associated with an *instance* of a class.  In other words, its value can be different for different objects created by the same class.
-
-Try creating two different objects from `BasicClass` and then using your setter method to give each of them a different value for the `@instance_var`.  Then use your getter method on each to see if they are *actually* different.
-
-A *class variable*, on the other hand, is the same for all instances of a class.
-
-Within your class definition, create the class variable `@@class_var` and assign it a value.
-
-Then define a getter and setter method for `@@class_var` and play around with assigning new values to it from multiple instances of the class.  
-
-What happens if you change the value of `@@class_var` from one instance, and then create a new instance of the class and use your getter method to read the value of `@@class_var`?
 
 
 
