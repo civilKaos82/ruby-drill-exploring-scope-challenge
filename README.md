@@ -1,9 +1,9 @@
 # Ruby Drill: Exploring Scope 
  
 ## Summary
-When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often we want to ues it later in our program.  So, we define a variable and assign our object to the variable.
+When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often we want to use it later in our program.  So, we define a variable and assign our object to the variable.
 
-We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Our choice of variable type will affect when and how we're able to access a variable.
+We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Each of these options will affect when and how we're able to access a variable.
 
 The question we'll explore in this challenge is "Where are our variables visible?".  In more technical language, we might ask, "What is the *scope* of a variable?".  We'll explore and refine our understanding of scope in Ruby.
 
@@ -13,7 +13,7 @@ The question we'll explore in this challenge is "Where are our variables visible
 
 *Figure 1*. Visual model of changing scope as code executes.
 
-Our programs begin executing in a top-level scope.  Some code triggers a change in scope.  For example, using the keyword `class` when defining a class changes scope, and the code defining the class is executed within this new scope.  Then, when the class definition is complete, our program returns to the previous scope.  Or, when we call a method, the method is executed in a new scope.  When the method is finished executing, our program again returns to the previous scope and continues.  This process is modeled in Figure 1.
+Our programs begin executing in a top-level scope.  Some code triggers a change in scope.  For example, using the keyword `class` when defining a class changes scope, and the code defining the class is executed within this new scope.  Then, when the class definition is complete, our program returns to the previous scope.  Another example is when we call a method, the method is executed in a new scope.  When the method is finished executing, our program again returns to the previous scope and continues.  This process is modeled in Figure 1.
 
 When scope changes, we lose access to some variables, as we'll see.
 
@@ -58,13 +58,13 @@ As we might imagine, relying on global variables whose values are subject to bei
 ### Release 1: Constants
 Constants are variables whose values are meant to be ... constant.  In other words, we don't reassign their values.  Conventionally, constants are written in all caps with words separated by underscores (e.g., `MINIMUM_HEIGHT`).  However, any variable that just begins with a capital letter is considered by Ruby to be a constant.  For example, classes and modules are considered constants as well, though we use different conventions for their names (e.g., `Person` or `HeightValidator`).
 
-As with global variables, constants are always accessible in our programs.  However, depending on the scope in which the constant has been defined, it might not be as straight forward to access as a global variable.
+As with global variables, constants are always accessible in our programs.  However, depending on the scope in which the constant has been defined, it might not be as straightforward to access as a global variable.
 
-We're going to demonstrate working with global variables with the provided `RideHeightCalculator` module.  Look at the code for the module (see `ride_height_calculator.rb`).  In the code, we begin by defining a constant, `PARK_NAME`.  We then define a module and within the module define a series of constants (e.g., `ROLLER_COASTER_MINIMUM_HEIGHT`).
+We're going to demonstrate working with constants with the provided `RideHeightCalculator` module.  Look at the code for the module (see `ride_height_calculator.rb`).  In the code, we begin by defining a constant, `PARK_NAME`.  We then define a module and within the module define a series of constants (e.g., `ROLLER_COASTER_MINIMUM_HEIGHT`).
 
 Open IRB and ...
 
-1. Check the value of `PARK_NAME`.  Unlike constants which, when unassigned, default to `nil`, trying to access an uninitialized constant will raise an error.
+1. Check the value of `PARK_NAME`.  Unlike global variables, which default to `nil`, trying to access an uninitialized constant will raise an error.
 
 2. `load 'ride_height_checker.rb'`
 
@@ -114,9 +114,9 @@ We'll explore the visibility of local variables by writing some code in IRB.  So
 
 7.  Run the method:  `current_status`.  We see that it returns `:intrigued`, the value of the local variable `status` within the scope of the method.
 
-8.  Has this affected the value of the top-level local variable `status`?  Access the value of `status`.  It's value has not been changed.  As we know it's out of scope when our method runs.
+8.  Has this affected the value of the top-level local variable `status`?  Access the value of `status`.  Its value has not been changed.  As we know it's out of scope when our method runs.
 
-9. Overwrite the method again so that it has one parameter:
+9. Rewrite the method again so that it has one parameter:
 
   ```ruby
   def current_status(status)
@@ -129,11 +129,11 @@ We'll explore the visibility of local variables by writing some code in IRB.  So
 11.  Given that method parameters act as local variables when the method runs, would having a parameter named `status` interfere with our top-level variable `status`?  Access the value of `status`.  Was it affected?
 
 
-This is by no means an exhaustive exploration of local variables, but it should provide a foundation for understanding how changes in scope affect the visibility of local variables.  The key take away is that anytime scope changes, there is also a change in the set of local variables which are visible.
+This is by no means an exhaustive exploration of local variables, but it should provide a foundation for understanding how changes in scope affect the visibility of local variables.  The key takeaway is that anytime scope changes, there is also a change in the set of local variables which are visible.
 
 
 ### Release 3: Instance Variable
-We've worked with instance variables in previous challenges.  Instance variables are named beginning with `@`.  For example, `@name`, `@date_of_birth`, etc.  We use them to hold state for individual objects.  If we have a class `Employee`, we would use instance variables to hold the name of each unique instance of `Employee`.
+We've worked with instance variables in previous challenges.  Instance variables are named beginning with `@`.  For example, `@name`, `@date_of_birth`, etc.  We use them to hold state for individual objects.  If we have a class `Employee`, we would use the instance variable `@name` to hold the name of each unique instance of `Employee`.
 
 The visibility of instance variables is very limited.  They are only visible to the object to which they belong.  As we remember from the [accessor methods challenge], if we want an object to share the values of its instance variables, we create accessor methods to expose them.
 
@@ -179,7 +179,7 @@ Open IRB and ...
 ### Release 4: Class Variables
 As with global variables, there are not many situations where we would want to rely on class variables, but they do exist, so we'll take a look.  Class variables are named somewhat like instance variables, only they begin with `@@`.
 
-The key thing to understand about class variables is that they are visible to a class and all instances of that class.  We'll explore class variables using the supplied `Borg` class.  Take a look at the class.  The class definition begins by setting a class variable `@@borg_count`.  We also define a class method `Borg.count` which returns the value of the class variable.  And later we define an instance variable `Borg#name` which accesses the value of the instance variable.  Again, class variables are shared between the class itself and all instances of the class.
+The key thing to understand about class variables is that they are visible to a class and all instances of that class.  We'll explore class variables using the supplied `Borg` class.  Take a look at the class.  The class definition begins by setting a class variable `@@borg_count`.  We also define a class method `Borg.count` which returns the value of the class variable.  And later we define an instance method `Borg#name` which accesses the value of the class variable `@@borg_count`.  Again, class variables are shared between the class itself and all instances of the class.
 
 Open IRB and ...
 
