@@ -206,7 +206,7 @@ Again, class variables are shared between a class and all instances of that clas
 
 
 ## Conclusion
-This was a whirlwind tour of scope in Ruby, addressing the visibility of different types of variables.  We're going to assign objects to variables.  The better we understand how each type of variable operates, the better decisions we can make with regard to what type of variable to use.  As we write more and more Ruby, dealing with scope and variable visibility will become more and more second nature, but along the way there might be some bumps in the road.
+This was a whirlwind tour of scope in Ruby, addressing the visibility of different types of variables.  The better we understand how each type of variable operates, the better decisions we can make with regard to which type of variable to use.  As we write more and more Ruby, dealing with scope and variable visibility will become more and more second nature, but along the way there might be some bumps in the road.
 
 
 [accessor methods challenge]: ../../../ruby-drill-accessor-methods-challenge
