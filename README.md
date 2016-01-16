@@ -1,7 +1,7 @@
-# Ruby Drill: Exploring Scope 
- 
+# Ruby Drill: Exploring Scope
+
 ## Summary
-When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often we want to use it later in our program.  So, we define a variable and assign our object to the variable.
+When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often want to use it later in our program.  So, we define a variable and assign our object to the variable.
 
 We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Each of these options will affect when and how we're able to access a variable.
 
@@ -27,7 +27,7 @@ Global variables are the easiest to understand when it comes to scope.  That is 
 
 We're going to demonstrate working with global variables with the provided `TipCalculator` module.  Look at the code for the module (see `tip_calculator.rb`). We can see that the module has a method that returns the value of a global variable `$global_tip_percentage`.  It also has a method that reassigns the value of that global variable.  Before we begin working with the code, note that before a global variable's value has been assigned, its value is `nil`.
 
-Open IRB and ... 
+Open IRB and ...
 
 1. Check the value of `$global_tip_percentage`.  It should return `nil`, since we haven't assigned it a value.
 
@@ -143,16 +143,16 @@ Open IRB and ...
 
 1.  `load 'dog.rb'`.
 
-2.  Create a new instance of the class `Dog`:  
+2.  Create a new instance of the class `Dog`:
 
   ```ruby
   jayda = Dog.new('Jayda', 'English Bull Terrier', 'OH-123456')
   ```
 
-3.  Ask the new dog for its name:  `jayda.name`.  And, the object returns the value of its `@name` instance variable.  
+3.  Ask the new dog for its name:  `jayda.name`.  And, the object returns the value of its `@name` instance variable.
 
   In the body of the method `Dog#name`, we make no reference to any particular object, we just ask for `@name`.  Presumably, there could be any number of objects with the instance variable `@name`.  How is it determined which object's instance variable to return?
-  
+
 4.  Check the value of `self`.  It should be `main`.
 
 5.  Check the value of `@name`.  What is it?  It should be `nil`.  Just like global variables, instance variables which have not been assigned a value return `nil`.
