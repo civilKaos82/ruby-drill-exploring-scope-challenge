@@ -76,7 +76,7 @@ Open IRB and ...
 
 6. Exit IRB.
 
-7. Look at the code for the private method `.minimum_height_for_type`.  The constants are being accessed there without referencing the name of the module.  That's possible from within the module definition itself—the same would be true for a class definition.  But, as we saw, from outside the module definition, the constants are only accessible by using the module as a namespace (e.g., RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT).
+7. Look at the code for the private method `minimum_height_for_type`.  The constants are being accessed there without referencing the name of the module.  That's possible from within the module definition itself—the same would be true for a class definition.  But, as we saw, from outside the module definition, the constants are only accessible by using the module as a namespace (e.g., RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT).
 
 
 *Note:*  Technically, the value of a constant can be changed, but doing so would violate convention, and Ruby will warn us.
