@@ -137,7 +137,7 @@ We've worked with instance variables in previous challenges.  Instance variables
 
 The visibility of instance variables is very limited.  They are only visible to the object to which they belong.  As we remember from the [accessor methods challenge], if we want an object to share the values of its instance variables, we create accessor methods to expose them.
 
-We're going to explore a little more about instance variables.  We'll be working with the provided `Dog` class.  Take a moment to review the file `dog.rb`.  Notice that when a new instance of the class `Dog` is created, three arguments are expect and the each is assigned to an instance variable.  Then, each of the instance variables is exposed through a long-hand accessor method.
+We're going to explore a little more about instance variables.  We'll be working with the provided `Dog` class.  Take a moment to review the file `dog.rb`.  Notice that when a new instance of the class `Dog` is created, three arguments are expected and the each is assigned to an instance variable.  Then, each of the instance variables is exposed through a long-hand accessor method.
 
 Open IRB and ...
 
