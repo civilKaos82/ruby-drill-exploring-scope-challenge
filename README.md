@@ -114,7 +114,7 @@ We'll explore the visibility of local variables by writing some code in IRB.  So
 
 7.  Run the method:  `current_status`.  We see that it returns `:intrigued`, the value of the local variable `status` within the scope of the method.
 
-8.  Has this affected the value of the top-level local variable `status`?  Access the value of `status`.  Its value has not been changed.  As we know it's out of scope when our method runs.
+8.  Has this affected the value of the top-level local variable `status`?  Access the value of `status`.  Its value has not been changed.  As we know, it's out of scope when our method runs.
 
 9. Rewrite the method again so that it has one parameter:
 
