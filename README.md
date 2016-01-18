@@ -1,7 +1,7 @@
-# Ruby Drill: Exploring Scope 
- 
+# Ruby Drill: Exploring Scope
+
 ## Summary
-When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often we want to use it later in our program.  So, we define a variable and assign our object to the variable.
+When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often want to use it later in our program.  So, we define a variable and assign our object to the variable.
 
 We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Each of these options will affect when and how we're able to access a variable.
 
@@ -27,7 +27,7 @@ Global variables are the easiest to understand when it comes to scope.  That is 
 
 We're going to demonstrate working with global variables with the provided `TipCalculator` module.  Look at the code for the module (see `tip_calculator.rb`). We can see that the module has a method that returns the value of a global variable `$global_tip_percentage`.  It also has a method that reassigns the value of that global variable.  Before we begin working with the code, note that before a global variable's value has been assigned, its value is `nil`.
 
-Open IRB and ... 
+Open IRB and ...
 
 1. Check the value of `$global_tip_percentage`.  It should return `nil`, since we haven't assigned it a value.
 
@@ -76,7 +76,7 @@ Open IRB and ...
 
 6. Exit IRB.
 
-7. Look at the code for the private method `.minimum_height_for_type`.  The constants are being accessed there without referencing the name of the module.  That's possible from within the module definition itself—the same would be true for a class definition.  But, as we saw, from outside the module definition, the constants are only accessible by using the module as a namespace (e.g., RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT).
+7. Look at the code for the private method `minimum_height_for_type`.  The constants are being accessed there without referencing the name of the module.  That's possible from within the module definition itself—the same would be true for a class definition.  But, as we saw, from outside the module definition, the constants are only accessible by using the module as a namespace (e.g., RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT).
 
 
 *Note:*  Technically, the value of a constant can be changed, but doing so would violate convention, and Ruby will warn us.
@@ -114,7 +114,7 @@ We'll explore the visibility of local variables by writing some code in IRB.  So
 
 7.  Run the method:  `current_status`.  We see that it returns `:intrigued`, the value of the local variable `status` within the scope of the method.
 
-8.  Has this affected the value of the top-level local variable `status`?  Access the value of `status`.  Its value has not been changed.  As we know it's out of scope when our method runs.
+8.  Has this affected the value of the top-level local variable `status`?  Access the value of `status`.  Its value has not been changed.  As we know, it's out of scope when our method runs.
 
 9. Rewrite the method again so that it has one parameter:
 
@@ -137,22 +137,22 @@ We've worked with instance variables in previous challenges.  Instance variables
 
 The visibility of instance variables is very limited.  They are only visible to the object to which they belong.  As we remember from the [accessor methods challenge], if we want an object to share the values of its instance variables, we create accessor methods to expose them.
 
-We're going to explore a little more about instance variables.  We'll be working with the provided `Dog` class.  Take a moment to review the file `dog.rb`.  Notice that when a new instance of the class `Dog` is created, three arguments are expect and the each is assigned to an instance variable.  Then, each of the instance variables is exposed through a long-hand accessor method.
+We're going to explore a little more about instance variables.  We'll be working with the provided `Dog` class.  Take a moment to review the file `dog.rb`.  Notice that when a new instance of the class `Dog` is created, three arguments are expected and the each is assigned to an instance variable.  Then, each of the instance variables is exposed through a long-hand accessor method.
 
 Open IRB and ...
 
 1.  `load 'dog.rb'`.
 
-2.  Create a new instance of the class `Dog`:  
+2.  Create a new instance of the class `Dog`:
 
   ```ruby
   jayda = Dog.new('Jayda', 'English Bull Terrier', 'OH-123456')
   ```
 
-3.  Ask the new dog for its name:  `jayda.name`.  And, the object returns the value of its `@name` instance variable.  
+3.  Ask the new dog for its name:  `jayda.name`.  And, the object returns the value of its `@name` instance variable.
 
   In the body of the method `Dog#name`, we make no reference to any particular object, we just ask for `@name`.  Presumably, there could be any number of objects with the instance variable `@name`.  How is it determined which object's instance variable to return?
-  
+
 4.  Check the value of `self`.  It should be `main`.
 
 5.  Check the value of `@name`.  What is it?  It should be `nil`.  Just like global variables, instance variables which have not been assigned a value return `nil`.
@@ -180,6 +180,8 @@ Open IRB and ...
 As with global variables, there are not many situations where we would want to rely on class variables, but they do exist, so we'll take a look.  Class variables are named somewhat like instance variables, only they begin with `@@`.
 
 The key thing to understand about class variables is that they are visible to a class and all instances of that class.  We'll explore class variables using the supplied `Borg` class.  Take a look at the class.  The class definition begins by setting a class variable `@@borg_count`.  We also define a class method `Borg.count` which returns the value of the class variable.  And later we define an instance method `Borg#name` which accesses the value of the class variable `@@borg_count`.  Again, class variables are shared between the class itself and all instances of the class.
+
+*Note:*  The Borg are a fictional alien race in the Star Trek franchise.  They operate with a hive mind, so an individual Borg conceivably knows how many Borg there have been (`@@borg_count`). Individual Borg are typically referred to by numbers such as [Third of Five][] and [Seven of Nine][].
 
 Open IRB and ...
 
@@ -211,3 +213,5 @@ This was a whirlwind tour of scope in Ruby, addressing the visibility of differe
 
 [accessor methods challenge]: ../../../ruby-drill-accessor-methods-challenge
 [pickaxe guide scope]: http://ruby-doc.com/docs/ProgrammingRuby/html/language.html#UP
+[Seven of Nine]: http://memory-alpha.wikia.com/wiki/Seven_of_Nine
+[Third of Five]: http://memory-alpha.wikia.com/wiki/Hugh
