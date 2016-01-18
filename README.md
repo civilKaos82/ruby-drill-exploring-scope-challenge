@@ -181,6 +181,8 @@ As with global variables, there are not many situations where we would want to r
 
 The key thing to understand about class variables is that they are visible to a class and all instances of that class.  We'll explore class variables using the supplied `Borg` class.  Take a look at the class.  The class definition begins by setting a class variable `@@borg_count`.  We also define a class method `Borg.count` which returns the value of the class variable.  And later we define an instance method `Borg#name` which accesses the value of the class variable `@@borg_count`.  Again, class variables are shared between the class itself and all instances of the class.
 
+*Note:*  The Borg are a fictional alien race in the Star Trek franchise.  They operate with a hive mind, so an individual Borg conceivably knows how many Borg there have been (`@@borg_count`). Individual Borg are typically referred to by numbers such as [Third of Five][] and [Seven of Nine][].
+
 Open IRB and ...
 
 1.  `load 'borg.rb'`.
@@ -211,3 +213,5 @@ This was a whirlwind tour of scope in Ruby, addressing the visibility of differe
 
 [accessor methods challenge]: ../../../ruby-drill-accessor-methods-challenge
 [pickaxe guide scope]: http://ruby-doc.com/docs/ProgrammingRuby/html/language.html#UP
+[Seven of Nine]: http://memory-alpha.wikia.com/wiki/Seven_of_Nine
+[Third of Five]: http://memory-alpha.wikia.com/wiki/Hugh
