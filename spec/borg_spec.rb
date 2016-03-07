@@ -2,7 +2,7 @@ require_relative '../borg'
 
 describe Borg do
   describe 'class behaviors' do
-    it 'returns the number of number of instances that have been created' do
+    it 'returns the number of instances that have been created' do
       expect(Borg.count).to eq 0
     end
 
