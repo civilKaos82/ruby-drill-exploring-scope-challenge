@@ -70,9 +70,9 @@ Open IRB and ...
 
 3. Check the value of `PARK_NAME`.  Now that it's been declared and assigned, we can get its value.
 
-4. Check the value of `ROLLER_COASTER_MINIMUM_HEIGHT`.  Again we get an error.  Because this constant was declared within a module, we can't access it directly.
+4. Check the value of `ROLLER_COASTER_MINIMUM_HEIGHT`.  Again we get an error.  Because this constant was declared within a module, we can't access it directly. Its _scope_ is inaccessible.
 
-5. Check the value of `RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT`.  Because we defined this constant within the `RideHeightChecker`, we can go through that module to access it, making use of the namespace operator, `::`.
+5. Check the value of `RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT`.  Because we defined this constant within the `RideHeightChecker` module, we can go _through_ that module to access it, making use of the namespace operator, `::`.
 
 6. Exit IRB.
 
