@@ -3,7 +3,7 @@
 ## Summary
 When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often want to use it later in our program.  So, we define a variable and assign our object to the variable.
 
-We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Each of these options will affect when and how we're able to access a variable.
+We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Each of these options will affect when and how we're able to access stored data.
 
 The question we'll explore in this challenge is "Where are our variables visible?".  In more technical language, we might ask, "What is the *scope* of a variable?".  We'll explore and refine our understanding of scope in Ruby.
 
@@ -13,7 +13,7 @@ The question we'll explore in this challenge is "Where are our variables visible
 
 *Figure 1*. Visual model of changing scope as code executes.
 
-Our programs begin executing in a top-level scope.  Some code triggers a change in scope.  For example, using the keyword `class` when defining a class changes scope, and the code defining the class is executed within this new scope.  Then, when the class definition is complete, our program returns to the previous scope.  Another example is when we call a method, the method is executed in a new scope.  When the method is finished executing, our program again returns to the previous scope and continues.  This process is modeled in Figure 1.
+Our programs begin executing in a top-level scope.  Some code triggers a change in scope.  For example, using the keyword `module` when defining a module changes scope, and the code defining the module is executed within this new scope.  Then, when the class definition is complete, our program returns to the previous scope.  Another example is when we call a method, the method is executed in a new scope.  When the method is finished executing, our program again returns to the previous scope and continues.  This process is modeled in Figure 1.
 
 When scope changes, we lose access to some variables, as we'll see.
 
@@ -25,17 +25,17 @@ When scope changes, we lose access to some variables, as we'll see.
 ### Release 0: Global Variables
 Global variables are the easiest to understand when it comes to scope.  That is because they have visibility everywhere.  In other words, scope changes have no effect on whether or not a global variable is accessible.  We can access them and reassign their values anywhere in our code.
 
-We're going to demonstrate working with global variables with the provided `TipCalculator` module.  Look at the code for the module (see `tip_calculator.rb`). We can see that the module has a method that returns the value of a global variable `$global_tip_percentage`.  It also has a method that reassigns the value of that global variable.  Before we begin working with the code, note that before a global variable's value has been assigned, its value is `nil`.
+We're going to demonstrate working with global variables with the provided `TipCalculator` module.  Look at the code for the module (see `tip_calculator.rb`). We can see that the module has a method that returns the value of a global variable `$global_tip_percentage`.  It also has a method that reassigns the value of that `$global_tip_percentage`.
 
 Open IRB and ...
 
-1. Check the value of `$global_tip_percentage`.  It should return `nil`, since we haven't assigned it a value.
+1. Check the value of `$global_tip_percentage`.  It should return `nil`, since we haven't assigned it a value. This should be unsurprising because IRB doesn't know anything about the file `tip_calculator.rb` and the module defined inside it.
 
 2. Assign a value to our global variable:  `$global_tip_percentage = 0.15`.
 
 3. `load 'tip_calculator.rb'`.  When the module definition is executed, the value of `$global_tip_percentage` is reassigned to be `0.2`.
 
-4. Check the value of `$global_tip_percentage`.  It should have been changed to `0.2`.
+4. Check the value of `$global_tip_percentage`.  It should have been changed to `0.2`. Theorize why this might have changed. An explanation is at the bottom of this file.
 
 5. Ask the `TipCalculator` for the customary percentage.  It should return `0.2`, the value of `$global_tip_percentage`.
 
@@ -50,9 +50,9 @@ Open IRB and ...
 7. Exit IRB.
 
 
-To reiterate, global variables are always accessible.  We've assigned and accessed the value of a global variable in the top-level scope, while a module was being defined, and from within methods.  No scope change had an effect on our ability to access the global variable.
+To reiterate, global variables are always accessible.  We've assigned and accessed the value of a global variable in the top-level scope, while a module was being defined, and from within methods.  No scope change prohibited our ability to access, _and change_, the global variable.
 
-As we might imagine, relying on global variables whose values are subject to being changed at any time by any object can cause unexpected results.  Therefore, it's best practice not to utilize global variables, if it can be avoided.
+As we might imagine, relying on global variables whose values are subject to being changed at any time by any object can cause unexpected results and difficult to debug problems.  Therefore, it's best practice not to utilize global variables, if it can be avoided.
 
 
 ### Release 1: Constants
@@ -70,9 +70,9 @@ Open IRB and ...
 
 3. Check the value of `PARK_NAME`.  Now that it's been declared and assigned, we can get its value.
 
-4. Check the value of `ROLLER_COASTER_MINIMUM_HEIGHT`.  Again we get an error.  Because this constant was declared within a module, we can't access it directly.
+4. Check the value of `ROLLER_COASTER_MINIMUM_HEIGHT`.  Again we get an error.  Because this constant was declared within a module, we can't access it directly. Its _scope_ is inaccessible.
 
-5. Check the value of `RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT`.  Because we defined this constant within the `RideHeightChecker`, we can go through that module to access it, making use of the namespace operator, `::`.
+5. Check the value of `RideHeightChecker::ROLLER_COASTER_MINIMUM_HEIGHT`.  Because we defined this constant within the `RideHeightChecker` module, we can go _through_ that module to access it, making use of the namespace operator, `::`.
 
 6. Exit IRB.
 
@@ -209,6 +209,13 @@ Again, class variables are shared between a class and all instances of that clas
 
 ## Conclusion
 This was a whirlwind tour of scope in Ruby, addressing the visibility of different types of variables.  The better we understand how each type of variable operates, the better decisions we can make with regard to which type of variable to use.  As we write more and more Ruby, dealing with scope and variable visibility will become more and more second nature, but along the way there might be some bumps in the road.
+
+## Explanations
+
+Point 4: The `load` command opened the `module` scope and found, inside, a
+reference to a global, `$global_tip_percentage`. Thus is changed or _mutated_
+the value from the 0.15 _you_ entered to the `0.2` that was defined in
+`tip_calculator.rb`.
 
 
 [accessor methods challenge]: ../../../ruby-drill-accessor-methods-challenge
