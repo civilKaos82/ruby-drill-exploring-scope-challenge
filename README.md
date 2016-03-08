@@ -13,7 +13,7 @@ The question we'll explore in this challenge is "Where are our variables visible
 
 *Figure 1*. Visual model of changing scope as code executes.
 
-Our programs begin executing in a top-level scope.  Some code triggers a change in scope.  For example, using the keyword `class` when defining a class changes scope, and the code defining the class is executed within this new scope.  Then, when the class definition is complete, our program returns to the previous scope.  Another example is when we call a method, the method is executed in a new scope.  When the method is finished executing, our program again returns to the previous scope and continues.  This process is modeled in Figure 1.
+Our programs begin executing in a top-level scope.  Some code triggers a change in scope.  For example, using the keyword `module` when defining a module changes scope, and the code defining the module is executed within this new scope.  Then, when the class definition is complete, our program returns to the previous scope.  Another example is when we call a method, the method is executed in a new scope.  When the method is finished executing, our program again returns to the previous scope and continues.  This process is modeled in Figure 1.
 
 When scope changes, we lose access to some variables, as we'll see.
 
