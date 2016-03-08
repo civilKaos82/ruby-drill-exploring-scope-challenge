@@ -3,7 +3,7 @@
 ## Summary
 When we write our applications, we create objects: strings, arrays, hashes, custom objects, etc.  After creating an object, we often want to use it later in our program.  So, we define a variable and assign our object to the variable.
 
-We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Each of these options will affect when and how we're able to access a variable.
+We have different options when defining variables: global variables, constants, local variables, instance variables, and class variables.  Each of these options will affect when and how we're able to access stored data.
 
 The question we'll explore in this challenge is "Where are our variables visible?".  In more technical language, we might ask, "What is the *scope* of a variable?".  We'll explore and refine our understanding of scope in Ruby.
 
